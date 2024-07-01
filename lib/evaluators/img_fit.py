@@ -28,6 +28,7 @@ class Evaluator:
         psnr_item = psnr(gt_rgb, pred_rgb, data_range=1.)
         self.psnrs.append(psnr_item)
         save_path = os.path.join(cfg.result_dir, 'vis/res.jpg')
+        os.makedirs(save_path, exist_ok=True)
         imageio.imwrite(save_path, img_utils.horizon_concate(gt_rgb, pred_rgb))
 
     def summarize(self):

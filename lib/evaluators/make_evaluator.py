@@ -1,4 +1,4 @@
-import imp
+import importlib as imp
 import os
 from lib.datasets.dataset_catalog import DatasetCatalog
 
@@ -6,7 +6,7 @@ from lib.datasets.dataset_catalog import DatasetCatalog
 def _evaluator_factory(cfg):
     module = cfg.evaluator_module
     path = cfg.evaluator_path
-    evaluator = imp.load_source(module, path).Evaluator()
+    evaluator = imp.import_module(module, path).Evaluator()
     return evaluator
 
 
